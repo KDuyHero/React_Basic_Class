@@ -1,13 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import Nav from './views/Nav';
+
 
 const App = () => {
+  // Khai báo biến
+  let obj = {
+    name: "Duy", 
+    year: "2022",
+  }
+
   return (
     <div className="App">
+      <Nav></Nav>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {/* sử dụng biến */}
+          {/* Không Lỗi */}
+          hello {obj.name} in {obj.year}
         </p>
         <a
           className="App-link"
@@ -21,5 +32,7 @@ const App = () => {
     </div>
   );
 }
+
+
 
 export default App;
