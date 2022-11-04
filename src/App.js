@@ -15,10 +15,8 @@ const App = () => {
       <Nav></Nav>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {/* sử dụng biến */}
-          {/* Không Lỗi */}
-          hello {obj.name} in {obj.year}
+        <p style = {{color: 'red'}}>
+          This is react Project
         </p>
         <a
           className="App-link"
