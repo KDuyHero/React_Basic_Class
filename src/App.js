@@ -1,49 +1,60 @@
 import logo from './logo.svg';
 import './App.css';
 import Nav from './views/Nav';
+import Todo from './views/Todo';
 import {useState} from 'react'
 
 const App = () => {
 
   let [name, setName] = useState('Duy')     // name is string
   let [address, setAddress] = useState('')  // address is string
-  let [course, setCourse] = useState([      // course is a array of object
-    {id: 1, name: "learn HTML"}, 
-    {id: 2, name: "learn CSS"}, 
-    {id: 3, name: "learn js and react"}
+  let [todos, settodos] = useState([      // todo is a array of object
+    {id: 1, title: "learn HTML", type: "number 1"}, 
+    {id: 2, title: "learn CSS", type: "number 2"}, 
+    {id: 3, title: "learn js and react", type: "number 3"}
   ])
   const handleEventClick = (event) => {
-    let newCourse = {id: 4, name: address}
-    setCourse([...course, newCourse])
+    if (!address){
+      alert("No address")
+      return
+    }
+    let newtodo = {
+      id: Math.floor((Math.random()*1000) + 1), 
+      title: address, 
+      type: "number 4"
+    }
+    settodos([...todos, newtodo])
     setAddress('')
   }
 
-  const handleEventTextInput = (event) => {
+  const handleOnchange = (event) => {
     setAddress(event.target.value)
   }
 
+  const deleteDataTodo = (id) => {
+    let currentTodos = todos
+    currentTodos = todos.filter(item => item.id !== id)
+    settodos(currentTodos)
+  }
   return (
     <div className="App">
-      <Nav></Nav>
       <header className="App-header">
+        <Nav/>
         <img src={logo} className="App-logo" alt="logo" />
-        <ul>
-          {course.map(course=> {
-             return <li key={course.id}>{course.name}</li>
-          })}
-        </ul>
-        <p style={{ color: 'red' }}>
-          This is react Project {name}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <input type="text" value ={address} onChange={(event) => handleEventTextInput(event)}/>
+        <h1 style={{ color: 'red' }}>This is react Project {name}</h1>
+        <Todo
+          todos = {todos}
+          title = {"All title"}
+          deleteDataTodo = {deleteDataTodo}
+        />
+
+        <Todo
+          todos = {todos.filter(item => item.type === "number 1")}
+          title = {"number 1's todos"}
+          deleteDataTodo = {deleteDataTodo}
+
+        />
+        <input type="text" value ={address} onChange={(event) => handleOnchange(event)}/>
         <button type="button" onClick={(event) => handleEventClick(event)}>click me to refresh</button>
       </header>
     </div>
