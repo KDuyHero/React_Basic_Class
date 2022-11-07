@@ -17,7 +17,7 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   align-items: center;
   /* justify-content: center; */
   font-size: calc(10px + 2vmin);
@@ -35,4 +35,21 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin:0 20px;
+}
+
+td, th {
+  border: 1px solid #747474;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #545454;
 }
