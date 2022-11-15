@@ -1,17 +1,18 @@
-import './Nav.scss'
-
+import "./Nav.scss";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
-    return (
-        <div className="topnav">
-            <a className="active" href="#home">Home</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
-        </div>
-    );
-
-}
+  return (
+    <div className="topnav">
+      <Link className="active" to="/">
+        Home
+      </Link>
+      <Link to="/timer">Timer Apps</Link>
+      <Link to="/todo">Todo Apps</Link>
+      <Link to="/secret">Secret</Link>
+    </div>
+  );
+};
 
 // cần export để có thể import ở nơi khác => tái sử dụng
 export default Nav;
