@@ -4,7 +4,7 @@ const CountDown = (props) => {
   const [count, setCount] = useState(10);
 
   useEffect(() => {
-    if (count == 0) {
+    if (count === 0) {
       return;
     }
     let timer = setInterval(() => {

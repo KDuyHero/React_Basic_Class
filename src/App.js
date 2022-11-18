@@ -4,12 +4,19 @@ import Nav from "./views/Nav";
 import Todo from "./views/Todo";
 import Covid from "./views/Covid";
 import CountDown from "./views/Countdown";
+import Blog from "./views/Blog";
+import DetailBlog from "./views/DetailBlog";
 import { useState, useEffect } from "react";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  PrivateRoute,
+} from "react-router-dom";
 
 const App = () => {
-  let [name, setName] = useState("Duy"); // name is string
   let [address, setAddress] = useState(""); // address is string
   let [todos, settodos] = useState([
     // todo is a array of object
@@ -27,6 +34,7 @@ const App = () => {
       title: address,
       type: "number 4",
     };
+
     settodos([...todos, newtodo]);
     setAddress("");
   };
@@ -72,8 +80,12 @@ const App = () => {
               click me to refresh
             </button>
           </Router>
-          <Router path=""></Router>
-          <Router path=""></Router>
+          <Router path="/blog" exact>
+            <Blog />
+          </Router>
+          <Router path="/blog/:id" exact>
+            <DetailBlog />
+          </Router>
         </Switch>
       </div>
     </Router>

@@ -9,7 +9,7 @@ const Covid = () => {
 
   let url = `https://api.covid19api.com/country/vietnam?from=${priorDate.toISOString()}&to=${today.toISOString()}`;
 
-  const { data: dataCovid, isLoading, isError } = useFetch(url);
+  const { data: dataCovid, isLoading, isError } = useFetch(url, true);
 
   return (
     <div style={{ backgroundColor: "#282c34", color: "white" }}>
